@@ -8,7 +8,7 @@ import Education from "@/components/Education";
 import Languages from "@/components/Languages";
 import Hobbies from "@/components/Hobbies";
 import Contact from "@/components/Contact";
-import ProjectCard from "@/components/ProjectCard";
+import ProjectCard from "@/components/Projects";
 import { projects } from "@/data/projects";
 import { useLanguage } from "@/context/LanguageContext";
 

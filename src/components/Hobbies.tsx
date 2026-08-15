@@ -1,36 +1,49 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useLanguage } from "@/context/LanguageContext";
 
 const hobbies = [
-  { title: "[Loisir 1]", desc: "[courte description]" },
-  { title: "[Loisir 2]", desc: "[courte description]" },
-  { title: "[Loisir 3]", desc: "[courte description]" },
+  { emoji: "🏀", name: "Basketball" },
+  { emoji: "🎬", name: "Cinéma" },
+  { emoji: "✈️", name: "Voyage" },
 ];
 
 export default function Hobbies() {
-  const { t } = useLanguage();
-
   return (
-    <section id="hobbies" className="max-w-5xl mx-auto px-6 py-24">
-      <h2 className="text-3xl font-bold text-white mb-2">
-        {t.hobbies.title}<span className="text-orange-500">.</span>
-      </h2>
-      <p className="text-neutral-500 mb-8">{t.hobbies.subtitle}</p>
+    <section id="hobbies" className="max-w-6xl mx-auto px-3 md:px-4 py-24">
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="text-3xl font-bold text-white mb-2"
+      >
+        Loisirs
+        <span className="text-blue-500">.</span>
+      </motion.h2>
+      <p className="text-neutral-500 mb-10">Ce qui m&apos;occupe en dehors du code.</p>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {hobbies.map((hobby, i) => (
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+        {hobbies.map((h, i) => (
           <motion.div
-            key={hobby.title}
-            initial={{ opacity: 0, y: 20 }}
+            key={h.name}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: i * 0.1 }}
-            className="bg-neutral-900 border border-neutral-800 rounded-xl p-6 hover:border-orange-500/50 transition-colors"
+            transition={{ duration: 0.45, delay: i * 0.1 }}
+            whileHover={{ y: -4, scale: 1.03 }}
+            className="relative bg-neutral-900/60 border border-neutral-800 rounded-2xl p-8 text-center overflow-hidden hover:border-blue-500/50 transition-colors"
           >
-            <h3 className="text-white font-semibold mb-1">{hobby.title}</h3>
-            <p className="text-neutral-500 text-sm">{hobby.desc}</p>
+            <div className="pointer-events-none absolute -bottom-16 -left-16 w-36 h-36 bg-blue-600/10 rounded-full blur-3xl" />
+
+            <motion.div
+              className="relative text-4xl mb-3"
+              animate={{ y: [0, -6, 0] }}
+              transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut", delay: i * 0.3 }}
+            >
+              {h.emoji}
+            </motion.div>
+            <h3 className="relative text-white font-semibold">{h.name}</h3>
           </motion.div>
         ))}
       </div>
