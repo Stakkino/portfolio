@@ -8,7 +8,7 @@ import GithubIcon from "@/components/icons/GithubIcon";
 // 1. Crée un compte gratuit sur https://formspree.io
 // 2. Crée un formulaire, copie son "endpoint" (ex: https://formspree.io/f/xxxxxxx)
 // 3. Colle-le ci-dessous à la place de l'URL exemple
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/REMPLACE_MOI";
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/moealoyw";
 
 const PHONE = "+261 38 80 865 33";
 const EMAIL = "jhenstakkino@gmail.com";

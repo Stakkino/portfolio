@@ -10,8 +10,6 @@ const EMAIL = "jhenstakkino@gmail.com";
 const CITY = "Antananarivo, Madagascar";
 const GITHUB = "https://github.com/Stakkino";
 
-const strengths = ["Curieux", "Autodidacte", "Rigoureux", "Esprit d'équipe", "Créatif"];
-
 export default function About() {
   const { t } = useLanguage();
 
@@ -20,7 +18,7 @@ export default function About() {
     { icon: Mail, label: EMAIL, href: `mailto:${EMAIL}` },
     { icon: MapPin, label: CITY, href: undefined },
     { icon: Flag, label: "Malagasy 🇲🇬", href: undefined },
-    { icon: CheckCircle2, label: "Ouvert aux opportunités", href: undefined },
+    { icon: CheckCircle2, label: t.about.openTo, href: undefined },
     { icon: GithubIcon, label: "github.com/Stakkino", href: GITHUB },
   ];
 
@@ -47,7 +45,6 @@ export default function About() {
           transition={{ duration: 0.6 }}
           className="relative bg-neutral-900/60 border border-neutral-800 rounded-2xl p-6 md:p-10 overflow-hidden"
         >
-          {/* Glow décoratif */}
           <div className="pointer-events-none absolute -top-24 -right-24 w-64 h-64 bg-blue-600/20 rounded-full blur-3xl" />
           <div className="pointer-events-none absolute -bottom-24 -left-24 w-64 h-64 bg-slate-700/20 rounded-full blur-3xl" />
 
@@ -56,7 +53,7 @@ export default function About() {
           </p>
 
           <div className="relative flex flex-wrap gap-2 mb-8">
-            {strengths.map((s, i) => (
+            {t.about.strengths.map((s, i) => (
               <motion.span
                 key={s}
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -84,7 +81,7 @@ export default function About() {
             className="relative inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-linear-to-r from-blue-600 to-slate-800 text-white text-sm font-semibold shadow-lg shadow-blue-950/40 hover:shadow-blue-900/60 transition-shadow"
           >
             <GithubIcon size={16} />
-            Voir mon GitHub
+            {t.about.viewGithub}
           </motion.a>
         </motion.div>
 
