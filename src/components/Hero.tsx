@@ -22,7 +22,7 @@ export default function Hero() {
   const { t } = useLanguage();
 
   return (
-    <section className="min-h-screen flex items-center max-w-7xl mx-auto px-5 pt-24">
+    <section className="min-h-screen flex items-center max-w-7xl mx-auto px-5 pt-14">
       <div className="grid grid-cols-1 md:grid-cols-[1fr_1.3fr] gap-12 items-center w-full">
         {/* Colonne photo — à gauche, entre en glissant de droite à gauche */}
         <motion.div
@@ -121,7 +121,7 @@ export default function Hero() {
               className="flex items-center gap-2 px-4 py-2 rounded-full border border-neutral-700 text-neutral-300 hover:border-blue-500 hover:text-blue-400 transition-colors"
             >
               <Download size={15} />
-              Télécharger mon cv
+              {t.hero.lcv}
             </a>
           </motion.div>
         </div>

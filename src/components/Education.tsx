@@ -2,36 +2,23 @@
 
 import { motion } from "framer-motion";
 import { GraduationCap, Cpu, BrainCircuit } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
-const formations = [
-  {
-    icon: Cpu,
-    title: "Certification Arduino Base",
-    org: "Tansfert Multisort Electronik Education",
-    period: "2025",
-    description: "Programmation embarquée, circuits de base.",
-    badge: "Certification",
-  },
-  {
-    icon: BrainCircuit,
-    title: "Attestation IA et Automatisation",
-    org: "Orange Digital Center Soarano",
-    period: "Avril 2026",
-    description: "Optimisation des processus.",
-    badge: "Attestation",
-  },
-  {
-    icon: GraduationCap,
-    title: "Licence 2 Informatique",
-    org: "Université FJKM Ravelojaona, Antananarivo",
-    period: "En cours",
-    description: "Formation universitaire en informatique.",
-    badge: "En cours",
-    current: true,
-  },
-];
+// Icône + statut "en cours" associés à chaque étape, par clé
+// (les textes viennent de translations.ts)
+const iconByKey: Record<string, typeof GraduationCap> = {
+  arduino: Cpu,
+  ia: BrainCircuit,
+  licence: GraduationCap,
+};
 
-export default function Formation() {
+const currentByKey: Record<string, boolean> = {
+  licence: true,
+};
+
+export default function Education() {
+  const { t } = useLanguage();
+
   return (
     <section id="education" className="max-w-6xl mx-auto px-3 md:px-4 py-24">
       <motion.h2
@@ -41,41 +28,38 @@ export default function Formation() {
         transition={{ duration: 0.5 }}
         className="text-3xl font-bold text-white mb-2"
       >
-        Formation
+        {t.education.title}
         <span className="text-blue-500">.</span>
       </motion.h2>
-      <p className="text-neutral-500 mb-12">
-        Parcours académique et formations complémentaires.
-      </p>
+      <p className="text-neutral-500 mb-12">{t.education.subtitle}</p>
 
       <div className="relative">
-        {/* Ligne verticale */}
         <div className="absolute left-4.75 top-2 bottom-2 w-px bg-neutral-800" />
 
         <div className="flex flex-col gap-8">
-          {formations.map((f, i) => {
-            const Icon = f.icon;
+          {t.education.items.map((f, i) => {
+            const Icon = iconByKey[f.key] ?? GraduationCap;
+            const isCurrent = currentByKey[f.key] ?? false;
             return (
               <motion.div
-                key={f.title}
+                key={f.key}
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.12 }}
                 className="relative flex gap-5"
               >
-                {/* Icône / point de la timeline */}
                 <div className="relative z-10 shrink-0">
                   <div
                     className={`w-10 h-10 rounded-full flex items-center justify-center border ${
-                      f.current
+                      isCurrent
                         ? "bg-blue-600 border-blue-500 shadow-lg shadow-blue-950/50"
                         : "bg-neutral-900 border-blue-500/30"
                     }`}
                   >
-                    <Icon size={17} className={f.current ? "text-white" : "text-blue-400"} />
+                    <Icon size={17} className={isCurrent ? "text-white" : "text-blue-400"} />
                   </div>
-                  {f.current && (
+                  {isCurrent && (
                     <motion.span
                       animate={{ scale: [1, 1.6, 1], opacity: [0.6, 0, 0.6] }}
                       transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
@@ -84,7 +68,6 @@ export default function Formation() {
                   )}
                 </div>
 
-                {/* Contenu */}
                 <motion.div
                   whileHover={{ x: 4 }}
                   className="flex-1 bg-neutral-900/60 border border-neutral-800 rounded-xl px-5 py-4 hover:border-blue-500/50 transition-colors mb-0"

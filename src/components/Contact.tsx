@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Send, CheckCircle2, XCircle } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 import GithubIcon from "@/components/icons/GithubIcon";
 
 // 1. Crée un compte gratuit sur https://formspree.io
@@ -18,6 +19,7 @@ const GITHUB = "https://github.com/Stakkino";
 type Status = "idle" | "loading" | "success" | "error";
 
 export default function Contact() {
+  const { t } = useLanguage();
   const [status, setStatus] = useState<Status>("idle");
   const [form, setForm] = useState({ name: "", email: "", message: "" });
 
@@ -65,12 +67,10 @@ export default function Contact() {
         transition={{ duration: 0.5 }}
         className="text-3xl font-bold text-white mb-2"
       >
-        Contact
+        {t.contact.title}
         <span className="text-blue-500">.</span>
       </motion.h2>
-      <p className="text-neutral-500 mb-10">
-        Une opportunité, une question, un projet ? Écris-moi.
-      </p>
+      <p className="text-neutral-500 mb-10">{t.contact.subtitle}</p>
 
       <div className="grid grid-cols-1 md:grid-cols-[1fr_1.3fr] gap-6">
         {/* Coordonnées */}
@@ -133,7 +133,7 @@ export default function Contact() {
             <input
               type="text"
               name="name"
-              placeholder="Ton nom"
+              placeholder={t.contact.name}
               required
               value={form.name}
               onChange={handleChange}
@@ -142,7 +142,7 @@ export default function Contact() {
             <input
               type="email"
               name="email"
-              placeholder="Ton email"
+              placeholder={t.contact.email}
               required
               value={form.email}
               onChange={handleChange}
@@ -150,7 +150,7 @@ export default function Contact() {
             />
             <textarea
               name="message"
-              placeholder="Ton message"
+              placeholder={t.contact.message}
               required
               rows={5}
               value={form.message}
@@ -166,11 +166,11 @@ export default function Contact() {
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-linear-to-r from-blue-600 to-slate-800 text-white text-sm font-semibold shadow-lg shadow-blue-950/40 hover:shadow-blue-900/60 transition-shadow disabled:opacity-60"
             >
               {status === "loading" ? (
-                "Envoi en cours..."
+                t.contact.sending
               ) : (
                 <>
                   <Send size={15} />
-                  Envoyer le message
+                  {t.contact.send}
                 </>
               )}
             </motion.button>
@@ -182,7 +182,7 @@ export default function Contact() {
                 className="flex items-center gap-2 text-sm text-blue-400"
               >
                 <CheckCircle2 size={16} />
-                Message envoyé, merci !
+                {t.contact.success}
               </motion.p>
             )}
             {status === "error" && (
@@ -192,7 +192,7 @@ export default function Contact() {
                 className="flex items-center gap-2 text-sm text-red-400"
               >
                 <XCircle size={16} />
-                Une erreur est survenue, réessaie ou écris-moi directement par email.
+                {t.contact.error}
               </motion.p>
             )}
           </div>

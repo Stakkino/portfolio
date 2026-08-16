@@ -1,66 +1,33 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  Server,
-  Database,
-  Sigma,
-  LayoutTemplate,
-  Wrench,
-} from "lucide-react";
+import { Server, Database, Sigma, LayoutTemplate, Wrench } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 import GithubIcon from "@/components/icons/GithubIcon";
 
 const GITHUB = "https://github.com/Stakkino";
 
-type Level = "En cours" | "Passionné" | "Fondations" | "Bases" | "Usage quotidien";
-
-const levelColor: Record<Level, string> = {
-  "En cours": "bg-blue-500",
-  Passionné: "bg-blue-400",
-  Fondations: "bg-slate-400",
-  Bases: "bg-slate-500",
-  "Usage quotidien": "bg-blue-600",
+// Icône associée à chaque catégorie, par clé (les textes viennent de translations.ts)
+const iconByKey: Record<string, typeof Server> = {
+  backend: Server,
+  db: Database,
+  math: Sigma,
+  frontend: LayoutTemplate,
+  tools: Wrench,
 };
 
-const categories: {
-  icon: typeof Server;
-  title: string;
-  level: Level;
-  skills: string[];
-}[] = [
-  {
-    icon: Server,
-    title: "Backend",
-    level: "En cours",
-    skills: ["Python", "Django", "C++"],
-  },
-  {
-    icon: Database,
-    title: "Bases de données & Modélisation",
-    level: "Passionné",
-    skills: ["UML", "MySQL", "PostgreSQL", "SQLite"],
-  },
-  {
-    icon: Sigma,
-    title: "Mathématiques",
-    level: "Fondations",
-    skills: ["Algèbre", "Analyse", "Logique"],
-  },
-  {
-    icon: LayoutTemplate,
-    title: "Frontend",
-    level: "Bases",
-    skills: ["HTML5", "CSS3", "React", "Next"],
-  },
-  {
-    icon: Wrench,
-    title: "Outils",
-    level: "Usage quotidien",
-    skills: ["Git", "GitHub", "VS Code", "Linux"],
-  },
-];
+// Couleur du point de niveau, par clé
+const dotByKey: Record<string, string> = {
+  backend: "bg-blue-500",
+  db: "bg-blue-400",
+  math: "bg-slate-400",
+  frontend: "bg-slate-500",
+  tools: "bg-blue-600",
+};
 
 export default function Skills() {
+  const { t } = useLanguage();
+
   return (
     <section id="skills" className="max-w-6xl mx-auto px-3 md:px-4 py-24">
       <motion.h2
@@ -70,19 +37,17 @@ export default function Skills() {
         transition={{ duration: 0.5 }}
         className="text-3xl font-bold text-white mb-2"
       >
-        Compétences
+        {t.skills.title}
         <span className="text-blue-500">.</span>
       </motion.h2>
-      <p className="text-neutral-500 mb-10">
-        Approche mathématique et rigoureuse du développement — logique, structure, architecture claire.
-      </p>
+      <p className="text-neutral-500 mb-10">{t.skills.subtitle}</p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {categories.map((cat, i) => {
-          const Icon = cat.icon;
+        {t.skills.categories.map((cat, i) => {
+          const Icon = iconByKey[cat.key] ?? Server;
           return (
             <motion.div
-              key={cat.title}
+              key={cat.key}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -100,7 +65,7 @@ export default function Skills() {
               </div>
 
               <div className="relative flex items-center gap-2 mb-4">
-                <span className={`w-2 h-2 rounded-full ${levelColor[cat.level]}`} />
+                <span className={`w-2 h-2 rounded-full ${dotByKey[cat.key] ?? "bg-blue-500"}`} />
                 <span className="text-xs text-neutral-400">{cat.level}</span>
               </div>
 
@@ -132,7 +97,7 @@ export default function Skills() {
         className="mt-8 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-linear-to-r from-blue-600 to-slate-800 text-white text-sm font-semibold shadow-lg shadow-blue-950/40 hover:shadow-blue-900/60 transition-shadow"
       >
         <GithubIcon size={16} />
-        Voir mon parcours complet sur GitHub
+        {t.skills.viewGithub}
       </motion.a>
     </section>
   );

@@ -3,14 +3,17 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 
+// Couleurs du drapeau de chaque pays, utilisées pour le dégradé de fond de chaque carte
+const items = [
+  { flag: "🇲🇬", code: "MG", name: "Malagasy", from: "from-green-600", via: "via-white/10", to: "to-red-600" },
+  { flag: "🇫🇷", code: "FR", name: "Français", from: "from-blue-600", via: "via-white/10", to: "to-red-600" },
+  { flag: "🇬🇧", code: "GB", name: "English", from: "from-blue-700", via: "via-white/10", to: "to-red-600" },
+];
+
 export default function Languages() {
   const { t } = useLanguage();
 
-  const items = [
-    { flag: "🇲🇬", name: "Malagasy", level: t.languages.native },
-    { flag: "🇫🇷", name: "Français", level: t.languages.fluent },
-    { flag: "🇬🇧", name: "English", level: t.languages.intermediate },
-  ];
+  const levels = [t.languages.native, t.languages.fluent, t.languages.intermediate];
 
   return (
     <section id="languages" className="max-w-6xl mx-auto px-3 md:px-4 py-24">
@@ -29,15 +32,24 @@ export default function Languages() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {items.map((item, i) => (
           <motion.div
-            key={item.name}
+            key={item.code}
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.45, delay: i * 0.1 }}
             whileHover={{ y: -4, scale: 1.02 }}
-            className="relative bg-neutral-900/60 border border-neutral-800 rounded-2xl p-6 text-center overflow-hidden hover:border-blue-500/50 transition-colors"
+            className="relative rounded-2xl p-6 text-center overflow-hidden border border-neutral-800 hover:border-blue-500/50 transition-colors"
           >
-            <div className="pointer-events-none absolute -top-16 -right-16 w-36 h-36 bg-blue-600/10 rounded-full blur-3xl" />
+            {/* Fond = couleurs du drapeau, en dégradé sombre */}
+            <div
+              className={`absolute inset-0 bg-linear-to-br ${item.from} ${item.via} ${item.to} opacity-15`}
+            />
+            <div className="absolute inset-0 bg-neutral-950/70" />
+
+            {/* Drapeau géant en filigrane */}
+            <div className="absolute -bottom-6 -right-4 text-8xl opacity-15 select-none pointer-events-none rotate-6">
+              {item.flag}
+            </div>
 
             <motion.div
               className="relative text-4xl mb-3"
@@ -49,7 +61,7 @@ export default function Languages() {
               {item.flag}
             </motion.div>
             <h3 className="relative text-white font-semibold">{item.name}</h3>
-            <p className="relative text-blue-400 text-sm mt-1">{item.level}</p>
+            <p className="relative text-blue-400 text-sm mt-1">{levels[i]}</p>
           </motion.div>
         ))}
       </div>
