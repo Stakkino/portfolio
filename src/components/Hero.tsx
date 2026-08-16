@@ -22,7 +22,7 @@ export default function Hero() {
   const { t } = useLanguage();
 
   return (
-    <section className="min-h-screen flex items-center max-w-7xl mx-auto px-5 pt-14">
+    <section className="min-h-screen flex items-center max-w-7xl mx-auto px-5 pt-18">
       <div className="grid grid-cols-1 md:grid-cols-[1fr_1.3fr] gap-12 items-center w-full">
         {/* Colonne photo — à gauche, entre en glissant de droite à gauche */}
         <motion.div
