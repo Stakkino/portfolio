@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { Lang } from "@/lib/translations";
 
@@ -9,6 +10,9 @@ const langs: { code: Lang; label: string }[] = [
   { code: "en", label: "EN" },
   { code: "fr", label: "FR" },
 ];
+
+// Durée totale d'un cycle d'animation du logo (en secondes)
+const LOGO_CYCLE = 5;
 
 export default function Navbar() {
   const { lang, setLang, t } = useLanguage();
@@ -27,8 +31,42 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur-sm border-b border-neutral-800">
       <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        <span className="text-white font-bold text-lg">
-          Stakkino<span className="text-blue-500">.</span>
+        <span className="text-white font-bold text-lg inline-flex items-baseline">
+          {/* Le "S" tourne sur lui-même sur 360°, puis s'arrête */}
+          <motion.span
+            className="inline-block text-2xl font-bold"
+            animate={{ rotate: [0, 360, 360] }}
+            transition={{
+              duration: LOGO_CYCLE,
+              repeat: Infinity,
+              times: [0, 0.20, 1],
+              ease: "easeInOut",
+            }}
+          >
+            <span className="text-blue-500">S</span>
+          </motion.span>
+
+          {/* "takkino" se révèle de gauche à droite depuis le S, reste, puis se rétracte */}
+          <motion.span
+            className="inline-block"
+            animate={{
+              clipPath: [
+                "inset(0 100% 0 0)",
+                "inset(0 100% 0 0)",
+                "inset(0 0% 0 0)",
+                "inset(0 0% 0 0)",
+                "inset(0 100% 0 0)",
+              ],
+            }}
+            transition={{
+              duration: LOGO_CYCLE,
+              repeat: Infinity,
+              times: [0, 0.20, 0.3, 0.95, 1],
+              ease: "easeInOut",
+            }}
+          >
+            <span className="text-blue-500">takkino</span>
+          </motion.span>
         </span>
 
         <div className="hidden md:flex gap-5 text-sm text-neutral-300">

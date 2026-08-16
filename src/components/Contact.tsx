@@ -59,7 +59,12 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="max-w-6xl mx-auto px-3 md:px-4 py-24">
+    <section id="contact" className="relative max-w-6xl mx-auto px-3 md:px-4 py-24">
+      <div
+        className="absolute inset-0 rounded-3xl overflow-hidden bg-cover bg-center opacity-10"
+        style={{ backgroundImage: "url('/images/stakk.png')" }}
+      />
+
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

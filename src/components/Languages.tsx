@@ -3,11 +3,12 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 
-// Couleurs du drapeau de chaque pays, utilisées pour le dégradé de fond de chaque carte
+// Chaque carte utilise la vraie photo du drapeau en fond
+// (fichiers à placer dans public/images/flags/)
 const items = [
-  { flag: "🇲🇬", code: "MG", name: "Malagasy", from: "from-green-600", via: "via-white/10", to: "to-red-600" },
-  { flag: "🇫🇷", code: "FR", name: "Français", from: "from-blue-600", via: "via-white/10", to: "to-red-600" },
-  { flag: "🇬🇧", code: "GB", name: "English", from: "from-blue-700", via: "via-white/10", to: "to-red-600" },
+  { flag: "🇲🇬", code: "MG", name: "Malagasy", bg: "/images/madagascar.jpg" },
+  { flag: "🇫🇷", code: "FR", name: "Français", bg: "/images/france.jpg" },
+  { flag: "🇬🇧", code: "GB", name: "English", bg: "/images/uk.jpg" },
 ];
 
 export default function Languages() {
@@ -40,16 +41,13 @@ export default function Languages() {
             whileHover={{ y: -4, scale: 1.02 }}
             className="relative rounded-2xl p-6 text-center overflow-hidden border border-neutral-800 hover:border-blue-500/50 transition-colors"
           >
-            {/* Fond = couleurs du drapeau, en dégradé sombre */}
+            {/* Fond = photo réelle du drapeau */}
             <div
-              className={`absolute inset-0 bg-linear-to-br ${item.from} ${item.via} ${item.to} opacity-15`}
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: `url('${item.bg}')` }}
             />
-            <div className="absolute inset-0 bg-neutral-950/70" />
-
-            {/* Drapeau géant en filigrane */}
-            <div className="absolute -bottom-6 -right-4 text-8xl opacity-15 select-none pointer-events-none rotate-6">
-              {item.flag}
-            </div>
+            {/* Voile sombre pour garder le texte lisible */}
+            <div className="absolute inset-0 bg-neutral-950/70 group-hover:bg-neutral-950/60" />
 
             <motion.div
               className="relative text-4xl mb-3"
