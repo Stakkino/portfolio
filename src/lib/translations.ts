@@ -3,6 +3,7 @@ export type Lang = "fr" | "mg" | "en";
 export type SkillCategory = { key: string; title: string; level: string; skills: string[] };
 export type EducationItem = { key: string; title: string; org: string; period: string; description: string; badge: string };
 export type ProjectItem = { key: string; name: string; description: string };
+export type HobbyItem = { key: string; name: string };
 
 export const translations: Record<Lang, {
   nav: { about: string; skills: string; education: string; projects: string; languages: string; hobbies: string; contact: string };
@@ -12,7 +13,7 @@ export const translations: Record<Lang, {
   education: { title: string; subtitle: string; items: EducationItem[] };
   projects: { title: string; subtitle: string; viewGithub: string; viewLive: string; items: ProjectItem[] };
   languages: { title: string; subtitle: string; native: string; fluent: string; intermediate: string };
-  hobbies: { title: string; subtitle: string };
+  hobbies: { title: string; subtitle: string; items: HobbyItem[] };
   contact: { title: string; subtitle: string; name: string; email: string; message: string; send: string; sending: string; success: string; error: string };
   footer: { thanks: string; rights: string };
 }> = {
@@ -77,7 +78,14 @@ export const translations: Record<Lang, {
     
     languages: { title: "Langues", subtitle: "Capacité à travailler dans des environnements multilingues.", native: "Langue maternelle", fluent: "Intermédiaire", intermediate: "Tecnique et Professionnel" },
     
-    hobbies: { title: "Loisirs & Passions", subtitle: "En dehors du code, ce qui me ressource." },
+    hobbies: {
+      title: "Loisirs & Passions", subtitle: "En dehors du code, ce qui me ressource.",
+      items: [
+        { key: "basketball", name: "Basketball" },
+        { key: "cinema", name: "Cinéma" },
+        { key: "voyage", name: "Voyage" },
+      ],
+    },
     
     contact: {
       title: "Me contacter", subtitle: "Disponible pour un stage, un emploi ou une collaboration.",
@@ -150,7 +158,14 @@ export const translations: Record<Lang, {
     
     languages: { title: "Fiteny", subtitle: "Fahaizana miasa amin'ny tontolo maro fiteny.", native: "Tenin-drazana", fluent: "Antonony", intermediate: "Teknika sy Ara-profesionaly" },
     
-    hobbies: { title: "Fialam-boly", subtitle: "Ivelan'ny code, izay mamelombelona ahy." },
+    hobbies: {
+      title: "Fialam-boly", subtitle: "Ivelan'ny code, izay mamelombelona ahy.",
+       items: [
+        { key: "basketball", name: "Basikety" },
+        { key: "cinema", name: "Sarimihetsika" },
+        { key: "voyage", name: "Dia" },
+      ],
+    },
     
     contact: {
       title: "Mifandraisa amiko", subtitle: "Vonona amin'ny stage, asa na fiaraha-miasa.",
@@ -223,7 +238,14 @@ export const translations: Record<Lang, {
     
     languages: { title: "Languages", subtitle: "Able to work in multilingual environments.", native: "Native", fluent: "Intermediate", intermediate: "Technical & Proficiency" },
     
-    hobbies: { title: "Hobbies & Passions", subtitle: "Outside of code, what keeps me inspired." },
+    hobbies: {
+      title: "Hobbies & Passions", subtitle: "Outside of code, what keeps me inspired.",
+      items: [
+        { key: "basketball", name: "Basketball" },
+        { key: "cinema", name: "Cinema" },
+        { key: "voyage", name: "Travel" },
+      ],
+    },
     
     contact: {
       title: "Get in touch", subtitle: "Available for an internship, a job or a collaboration.",

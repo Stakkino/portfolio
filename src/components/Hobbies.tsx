@@ -4,11 +4,11 @@ import { motion } from "framer-motion";
 import { Trophy, Film, Plane } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
-const hobbies = [
-  { icon: Trophy, name: "Basketball" },
-  { icon: Film, name: "Cinéma" },
-  { icon: Plane, name: "Voyage" },
-];
+const iconByKey: Record<string, typeof Trophy> = {
+  basketball: Trophy,
+  cinema: Film,
+  voyage: Plane,
+};
 
 export default function Hobbies() {
   const { t } = useLanguage();
@@ -28,11 +28,11 @@ export default function Hobbies() {
       <p className="text-neutral-500 mb-10">{t.hobbies.subtitle}</p>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-        {hobbies.map((h, i) => {
-          const Icon = h.icon;
+        {t.hobbies.items.map((h, i) => {
+          const Icon = iconByKey[h.key] ?? Trophy;
           return (
             <motion.div
-              key={h.name}
+              key={h.key}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -57,4 +57,3 @@ export default function Hobbies() {
     </section>
   );
 }
-
