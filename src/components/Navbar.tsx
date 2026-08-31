@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { Lang } from "@/lib/translations";
+import MatrixBackground from "@/components/MatrixBackground";
 
 const langs: { code: Lang; label: string }[] = [
   { code: "mg", label: "MG" },
@@ -29,8 +30,10 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur-sm border-b border-neutral-800">
-      <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <header className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur-sm border-b border-neutral-800 overflow-hidden">
+      <MatrixBackground />
+
+      <nav className="relative z-10 max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <span className="text-white font-bold text-lg inline-flex items-baseline">
           {/* Le "S" tourne sur lui-même sur 360°, puis s'arrête */}
           <motion.span
@@ -105,7 +108,7 @@ export default function Navbar() {
       </nav>
 
       {menuOpen && (
-        <div className="md:hidden flex flex-col gap-4 px-6 pb-6 text-neutral-300">
+        <div className="relative z-10 md:hidden flex flex-col gap-4 px-6 pb-6 text-neutral-300">
           {links.map((link) => (
             <a
               key={link.href}
