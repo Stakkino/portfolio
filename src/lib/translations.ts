@@ -59,7 +59,7 @@ export const translations: Record<Lang, {
       items: [
         { key: "arduino", title: "Certification Arduino Base", org: "Tansfert Multisort Electronik Education", period: "2025", description: "Programmation embarquée, circuits de base.", badge: "Certification" },
         { key: "ia", title: "Attestation IA et Automatisation", org: "Orange Digital Center Soarano", period: "Avril 2026", description: "Optimisation des processus.", badge: "Attestation" },
-        { key: "licence", title: "Licence 3 Informatique", org: "NEOTech Institue, Antananarivo", period: "En cours", description: "Formation universitaire en informatique.", badge: "En cours" },
+        { key: "licence", title: "Licence 3 Informatique", org: "NEOTech Institute, Antananarivo", period: "En cours", description: "Formation universitaire en informatique.", badge: "En cours" },
       ],
     },
     
@@ -139,7 +139,7 @@ export const translations: Record<Lang, {
       items: [
         { key: "arduino", title: "Fanamarinana Arduino Fototra", org: "Tansfert Multisort Electronik Education", period: "2025", description: "Fandaharana embarquée, faritry ny circuit fototra.", badge: "Fanamarinana" },
         { key: "ia", title: "Taratasy IA sy Fanatontoloana", org: "Orange Digital Center Soarano", period: "Aprily 2026", description: "Fanatsarana ny fizotran'asa.", badge: "Taratasy fanamarinana" },
-        { key: "licence", title: "Licence 3 amin'ny Informatika", org: "NEOTech Institue, Antananarivo", period: "Mbola mianatra", description: "Fianarana ambony amin'ny informatika.", badge: "Mbola mianatra" },
+        { key: "licence", title: "Licence 3 amin'ny Informatika", org: "NEOTech Institute, Antananarivo", period: "Mbola mianatra", description: "Fianarana ambony amin'ny informatika.", badge: "Mbola mianatra" },
       ],
     },
     
@@ -219,7 +219,7 @@ export const translations: Record<Lang, {
       items: [
         { key: "arduino", title: "Arduino Basics Certification", org: "Tansfert Multisort Electronik Education", period: "2025", description: "Embedded programming, basic circuits.", badge: "Certification" },
         { key: "ia", title: "AI & Automation Attestation", org: "Orange Digital Center Soarano", period: "April 2026", description: "Process optimization.", badge: "Attestation" },
-        { key: "licence", title: "Computer Science — Year 3 (Licence)", org: "NEOTech Institue, Antananarivo", period: "Ongoing", description: "University degree in computer science.", badge: "Ongoing" },
+        { key: "licence", title: "Computer Science — Year 3 (Licence)", org: "NEOTech Institute, Antananarivo", period: "Ongoing", description: "University degree in computer science.", badge: "Ongoing" },
       ],
     },
     
