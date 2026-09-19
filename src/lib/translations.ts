@@ -107,7 +107,7 @@ export const translations: Record<Lang, {
     
     hero: {
       greeting: "Tongasoa, izaho no",
-      role: "Mpamorona rafitra backend & fototao-drakitra, mazoto amin'ny faharanitan-tsaina voafetra sy zava-baovao ara-teknolojia",
+      role: "Mpamorona rafitra backend & angon-toro, mazoto amin'ny faharanitan-tsaina voafetra sy zava-baovao ara-teknolojia",
       tagline: "Manamboatra rafitra angon-drakitra mazava sy azo antoka aho, ary mandalina ny faharanitan-tsaina voafetra (AI) mba handrosoana lavitra kokoa, mamorona rafitra matanjaka sy vaovao vonona hiatrika ny fanamby rahampitso.",
       cta: "Jereo ny tetikasako",
       lcv : "Ampidino ny cv-ko",
@@ -116,7 +116,7 @@ export const translations: Record<Lang, {
     about: {
       title: "Mombamomba ahy",
       subtitle: "Ny fampahalalana rehetra ilaina hahafantaranao ny profil-ko.",
-      bio: "Amin'ny maha mpianatra momba ny informatika liana amin'ny fitantanana fototao-drakitra ahy, dia mirotsaka an-tsehatra amin'ny famoronana tetikasa mitondra vahaolana aho. Izany indrindra no isahanako ny toeran'ny Sekretera Jeneralin'ny Linked-Brain, izay mamolavola sehatra fianarana nomerika amin'izao fotoana izao. Manoloana ny olana tsirairay, dia tiako hatrany ny mijery ny vahaolana miainga amin'ny fomba fijery ara-matematika aloha vao mandroso amin'ny fanatanterahana. Ny tanjoko dia ny hanamboatra rafitra azo antoka, sady mandinika mandrakariva ny fomba ahafahan'ny faharanitan-tsaina voafetra manatsara izany.",
+      bio: "Amin'ny maha mpianatra momba ny informatika liana amin'ny fitantanana angon-toro ahy, dia mirotsaka an-tsehatra amin'ny famoronana tetikasa mitondra vahaolana aho. Izany indrindra no isahanako ny toeran'ny Sekretera Jeneralin'ny Linked-Brain, izay mamolavola sehatra fianarana nomerika amin'izao fotoana izao. Manoloana ny olana tsirairay, dia tiako hatrany ny mijery ny vahaolana miainga amin'ny fomba fijery ara-matematika aloha vao mandroso amin'ny fanatanterahana. Ny tanjoko dia ny hanamboatra rafitra azo antoka, sady mandinika mandrakariva ny fomba ahafahan'ny faharanitan-tsaina voafetra manatsara izany.",
       strengths: ["Mpikaroka", "Mianatra irery", "Marina", "Fiaraha-miasa", "Mahay mamorona"],
       openTo: "Vonona amin'ny fahafahana",
       viewGithub: "Jereo ny GitHub-ko",
@@ -127,7 +127,7 @@ export const translations: Record<Lang, {
       viewGithub: "Jereo ny dianay feno ao amin'ny GitHub",
       categories: [
         { key: "backend", title: "Backend", level: "Eo am-pandalinana", skills: ["Python", "Django", "C++"] },
-        { key: "db", title: "Angon-drakitra & Modelisation", level: "Tia be", skills: ["UML", "MySQL", "PostgreSQL", "SQLite"] },
+        { key: "db", title: "angon-toro & Modelisation", level: "Tia be", skills: ["UML", "MySQL", "PostgreSQL", "SQLite"] },
         { key: "math", title: "Matematika", level: "Fototra matanjaka", skills: ["Aljebra", "Fandinihana", "Lôjika"] },
         { key: "frontend", title: "Frontend", level: "Fototra fotsiny", skills: ["HTML5", "CSS3", "JS", "React", "Next"] },
         { key: "tools", title: "Fitaovana", level: "Ampiasaina isan'andro", skills: ["Git", "GitHub", "VS Code"] },
